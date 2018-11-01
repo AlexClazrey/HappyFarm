@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="HappyFarm" />
+		<Option pch_mode="2" />
+		<Option compiler="cygwin" />
+		<Build>
+			<Target title="WinDebug">
+				<Option platforms="Windows;" />
+				<Option output="bin/WinDebug/HappyFarm" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/WinDebug/" />
+				<Option type="1" />
+				<Option compiler="cygwin" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="WinRelease">
+				<Option platforms="Windows;" />
+				<Option output="bin/WinRelease/HappyFarm" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/WinRelease/" />
+				<Option type="1" />
+				<Option compiler="cygwin" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="LinuxDebug">
+				<Option platforms="Unix;Mac;" />
+				<Option output="bin/LinuxDebug/HappyFarm.bin" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj/LinuxDebug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="LinuxRelease">
+				<Option platforms="Unix;Mac;" />
+				<Option output="bin/LinuxRelease/HappyFarm.bin" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj/LinuxRelease/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-pedantic" />
+			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Linker>
+			<Add option="-lncurses" />
+			<Add option="-lpanel" />
+		</Linker>
+		<Unit filename="include/ConsoleBlock.h" />
+		<Unit filename="include/ConsoleBlockBackpack.h" />
+		<Unit filename="include/ConsoleBlockDesc.h" />
+		<Unit filename="include/ConsoleBlockField.h" />
+		<Unit filename="include/ConsoleBlockLog.h" />
+		<Unit filename="include/ConsoleBlockMenu.h" />
+		<Unit filename="include/ConsoleBlockPause.h" />
+		<Unit filename="include/ConsoleBlockShop.h" />
+		<Unit filename="include/ConsoleList.h" />
+		<Unit filename="include/ConsoleListA.h" />
+		<Unit filename="include/ConsoleTextArea.h" />
+		<Unit filename="include/CursorControl.h" />
+		<Unit filename="include/DebugHeader.h" />
+		<Unit filename="include/DeleteCallback.h" />
+		<Unit filename="include/DescriptionMaker.h" />
+		<Unit filename="include/DialogManager.h" />
+		<Unit filename="include/DialogUnit.h" />
+		<Unit filename="include/DialogUnitBackpack.h" />
+		<Unit filename="include/DialogUnitDesc.h" />
+		<Unit filename="include/DialogUnitField.h" />
+		<Unit filename="include/DialogUnitLog.h" />
+		<Unit filename="include/DialogUnitMenu.h" />
+		<Unit filename="include/DialogUnitPause.h" />
+		<Unit filename="include/DialogUnitShop.h" />
+		<Unit filename="include/DialogUnitTime.h" />
+		<Unit filename="include/DisplayManager.h" />
+		<Unit filename="include/DrawCommand.h" />
+		<Unit filename="include/EventManager.h" />
+		<Unit filename="include/Farm.h" />
+		<Unit filename="include/FarmBuilder.h" />
+		<Unit filename="include/FarmBuilderLoad.h" />
+		<Unit filename="include/FarmBuilderNew.h" />
+		<Unit filename="include/FarmClock.h" />
+		<Unit filename="include/FarmCommand.h" />
+		<Unit filename="include/FarmField.h" />
+		<Unit filename="include/FarmItem.h" />
+		<Unit filename="include/FarmItemSeed.h" />
+		<Unit filename="include/FarmManager.h" />
+		<Unit filename="include/FarmPack.h" />
+		<Unit filename="include/FarmPackBuilder.h" />
+		<Unit filename="include/FarmPackBuilderNew.h" />
+		<Unit filename="include/FarmTool.h" />
+		<Unit filename="include/FarmToolHarvest.h" />
+		<Unit filename="include/FarmToolPesticide.h" />
+		<Unit filename="include/FarmToolPlant.h" />
+		<Unit filename="include/FarmToolWater.h" />
+		<Unit filename="include/FarmToolbox.h" />
+		<Unit filename="include/FarmYard.h" />
+		<Unit filename="include/GameDriver.h" />
+		<Unit filename="include/GameDriverSingleton.h" />
+		<Unit filename="include/InputCommand.h" />
+		<Unit filename="include/InputManager.h" />
+		<Unit filename="include/MenuOption.h" />
+		<Unit filename="include/PlantFactory.h" />
+		<Unit filename="include/PlantLive.h" />
+		<Unit filename="include/PlantSpecies.h" />
+		<Unit filename="include/PlantSpeciesStrategyClasses.h" />
+		<Unit filename="include/PlantState.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/ConsoleBlock.cpp" />
+		<Unit filename="src/ConsoleBlockBackpack.cpp" />
+		<Unit filename="src/ConsoleBlockDesc.cpp" />
+		<Unit filename="src/ConsoleBlockField.cpp" />
+		<Unit filename="src/ConsoleBlockLog.cpp" />
+		<Unit filename="src/ConsoleBlockMenu.cpp" />
+		<Unit filename="src/ConsoleBlockPause.cpp" />
+		<Unit filename="src/ConsoleBlockShop.cpp" />
+		<Unit filename="src/ConsoleList.cpp" />
+		<Unit filename="src/ConsoleListA.cpp" />
+		<Unit filename="src/ConsoleTextArea.cpp" />
+		<Unit filename="src/CursorControl.cpp" />
+		<Unit filename="src/DeleteCallback.cpp" />
+		<Unit filename="src/DescriptionMaker.cpp" />
+		<Unit filename="src/DialogManager.cpp" />
+		<Unit filename="src/DialogUnit.cpp" />
+		<Unit filename="src/DialogUnitBackpack.cpp" />
+		<Unit filename="src/DialogUnitDesc.cpp" />
+		<Unit filename="src/DialogUnitField.cpp" />
+		<Unit filename="src/DialogUnitLog.cpp" />
+		<Unit filename="src/DialogUnitMenu.cpp" />
+		<Unit filename="src/DialogUnitPause.cpp" />
+		<Unit filename="src/DialogUnitShop.cpp" />
+		<Unit filename="src/DialogUnitTime.cpp" />
+		<Unit filename="src/DisplayManager.cpp" />
+		<Unit filename="src/DrawCommand.cpp" />
+		<Unit filename="src/EventManager.cpp" />
+		<Unit filename="src/Farm.cpp" />
+		<Unit filename="src/FarmBuilder.cpp" />
+		<Unit filename="src/FarmBuilderLoad.cpp" />
+		<Unit filename="src/FarmBuilderNew.cpp" />
+		<Unit filename="src/FarmClock.cpp" />
+		<Unit filename="src/FarmCommand.cpp" />
+		<Unit filename="src/FarmField.cpp" />
+		<Unit filename="src/FarmItem.cpp" />
+		<Unit filename="src/FarmItemSeed.cpp" />
+		<Unit filename="src/FarmManager.cpp" />
+		<Unit filename="src/FarmPack.cpp" />
+		<Unit filename="src/FarmPackBuilder.cpp" />
+		<Unit filename="src/FarmPackBuilderNew.cpp" />
+		<Unit filename="src/FarmTool.cpp" />
+		<Unit filename="src/FarmToolHarvest.cpp" />
+		<Unit filename="src/FarmToolPesticide.cpp" />
+		<Unit filename="src/FarmToolPlant.cpp" />
+		<Unit filename="src/FarmToolWater.cpp" />
+		<Unit filename="src/FarmToolbox.cpp" />
+		<Unit filename="src/FarmYard.cpp" />
+		<Unit filename="src/GameDriver.cpp" />
+		<Unit filename="src/GameDriverSingleton.cpp" />
+		<Unit filename="src/InputCommand.cpp" />
+		<Unit filename="src/InputManager.cpp" />
+		<Unit filename="src/MenuOption.cpp" />
+		<Unit filename="src/PlantFactory.cpp" />
+		<Unit filename="src/PlantLive.cpp" />
+		<Unit filename="src/PlantSpecies.cpp" />
+		<Unit filename="src/PlantSpeciesStrategyClasses.cpp" />
+		<Unit filename="src/PlantState.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
