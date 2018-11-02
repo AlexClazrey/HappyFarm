@@ -34,7 +34,7 @@ class DialogUnitShop : public DialogUnit, public EventManager::Observer
         std::vector<FarmItem::Code> codeList;
         static bool isGoods(const FarmItem*);
         void makeGoodsList(FarmPack* fp);
-        void makeDesc();
+        void makeDesc(Farm* farm);
         static int BuyConfirm(FarmItem::Code code, Farm *farm);
         static int BuyCancel() { return 0; }
 };

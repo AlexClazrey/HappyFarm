@@ -83,9 +83,11 @@ void DialogUnitField::onKeyPressed(InputCommand* cmd, Farm* farm) {
 }
 
 void DialogUnitField::refresh(Farm* farm) {
-    this->makeDesc(farm);
-    this->makeSummary(farm);
-    this->submit();
+    if(this->msg.show) {
+        this->makeDesc(farm);
+        this->makeSummary(farm);
+        this->submit();
+    }
 }
 
 void DialogUnitField::submit() {

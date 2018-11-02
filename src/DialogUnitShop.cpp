@@ -1,6 +1,7 @@
 #include "DialogUnitShop.h"
 #include "GameDriverSingleton.h"
 #include "DialogUnitField.h"
+#include "DescriptionMaker.h"
 #include <functional>
 #include <algorithm>
 
@@ -24,10 +25,10 @@ void DialogUnitShop::onKeyPressed(InputCommand* cmd, Farm* farm) {
     this->makeGoodsList(&farm->pack);
     if(cmd->getKeyPressed() == InputCommand::Down && msg.select < (int)msg.goods.size() - 1) {
         msg.select++;
-        this->makeDesc();
+        this->makeDesc(farm);
     } else if(cmd->getKeyPressed() == InputCommand::Up && msg.select > 0) {
         msg.select--;
-        this->makeDesc();
+        this->makeDesc(farm);
     } else if(cmd->getKeyPressed() == InputCommand::Enter) {
         FarmItem::Code code = codeList[msg.select];
         if(farm->money >= farm->pack.getItem(code)->getBuyPrice()) {
@@ -55,9 +56,9 @@ void DialogUnitShop::onKeyPressed(InputCommand* cmd, Farm* farm) {
 }
 
 void DialogUnitShop::refresh(Farm *farm) {
-    if(farm) {
+    if(farm && msg.show) {
         this->makeGoodsList(&farm->pack);
-        this->makeDesc();
+        this->makeDesc(farm);
         this->submit();
     }
 }
@@ -93,8 +94,14 @@ void DialogUnitShop::makeGoodsList(FarmPack* fp) {
     }
 }
 
-void DialogUnitShop::makeDesc() {
-    // TODO description maker
+void DialogUnitShop::makeDesc(Farm* farm) {
+    if(farm) {
+        std::vector<std::string>* lines = DescriptionMaker::makeItem(farm->pack.getItem(this->codeList[this->msg.select]));
+        std::string title = (*lines)[lines->size() - 1];
+        lines->pop_back();
+        GameDriverSingleton::getInstance()->setDesc(title, *lines);
+        delete lines;
+    }
 }
 
 int DialogUnitShop::BuyConfirm(FarmItem::Code code, Farm *farm) {

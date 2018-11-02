@@ -52,6 +52,19 @@ void FarmPack::initProto() {
                     "Potato",
                     "Finally, I dug out a big one.",
                     -1, 200);
+        protoPack.items[FarmItem::Code::CUCUMBER_SEED]
+            = new FarmItemSeed(FarmItem::Code::CUCUMBER_SEED,
+                            "Cucumber Seeds",
+                            "That's just a old cucumber I think.",
+                            80,
+                            30,
+                            PlantSpecies::CUCUMBER);
+        protoPack.items[FarmItem::Code::CUCUMBER_FRUIT]
+            = new FarmItem(FarmItem::Type::FRUIT,
+                    FarmItem::Code::CUCUMBER_FRUIT,
+                    "Cucumber",
+                    "Enjoy summer.",
+                    -1, 200);
     }
     inited = true;
 }

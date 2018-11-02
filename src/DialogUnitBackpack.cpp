@@ -3,6 +3,7 @@
 #include "FarmPack.h"
 #include "DialogUnitField.h"
 #include "DialogUnitShop.h"
+#include "DescriptionMaker.h"
 #include <functional>
 
 
@@ -64,7 +65,7 @@ void DialogUnitBackpack::onKeyPressed(InputCommand* cmd, Farm* farm) {
 }
 
 void DialogUnitBackpack::refresh(Farm* farm) {
-    if(farm) {
+    if(farm && msg.show) {
         this->makeGoodsList(&farm->pack);
         this->makeDesc();
         this->submit();
@@ -100,5 +101,9 @@ void DialogUnitBackpack::makeGoodsList(FarmPack* fp) {
 }
 
 void DialogUnitBackpack::makeDesc() {
-    //TODO
+    std::vector<std::string>* lines = DescriptionMaker::makeItem(this->goodsList[this->msg.select]);
+    std::string title = (*lines)[lines->size() - 1];
+    lines->pop_back();
+    GameDriverSingleton::getInstance()->setDesc(title, *lines);
+    delete lines;
 }

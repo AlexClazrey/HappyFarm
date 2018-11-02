@@ -47,6 +47,20 @@ void PlantFactory::initProtoPlant() {
                                 new PSSC::WaterA(3),
                                 new PSSC::GrowA(stages)
                                 );
+        stages.clear();
+        stages.push_back(PSSC::GrowA::Stage(5, "Seed", "A pole stands beside."));
+        stages.push_back(PSSC::GrowA::Stage(5, "Stem", "It goes high."));
+        stages.push_back(PSSC::GrowA::Stage(5, "Flower", "Little Yellow ones."));
+        stages.push_back(PSSC::GrowA::Stage(-1, "Fruit", "Sweet and juicy."));
+        protoPlant[PlantSpecies::Code::CUCUMBER]
+            = new PlantSpecies("Cucumber",
+                                new PSSC::FruitA(FarmItem::Code::CUCUMBER_FRUIT, 3, 1, 2, 50),
+                                new PSSC::HarvestLiveA(3, 1, true),
+                                new PSSC::HarvestSeedA(FarmItem::Code::CUCUMBER_SEED, 0, 1, 20),
+                                new PSSC::WormA(2),
+                                new PSSC::WaterA(2),
+                                new PSSC::GrowA(stages)
+                                );
     }
     inited = true;
 }
