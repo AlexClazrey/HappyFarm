@@ -22,8 +22,7 @@ void ConsoleBlockField::drawContent(void* rawMsg) {
             ->attrOn(A_BOLD)
             ->moveTo(CCTL::PT(6, 2))
             ->print("Your Yard")
-            ->attrOff(A_BOLD)
-            ->refresh();
+            ->attrOff(A_BOLD);
         this->cla->setLines(&msg->fields);
         this->cla->setSelect(msg->select);
         this->cla->printList();
