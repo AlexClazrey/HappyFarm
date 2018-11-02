@@ -6,7 +6,7 @@
 ConsoleBlockDesc::ConsoleBlockDesc() : ConsoleBlock(CCTL::PT(70,0), CCTL::PT(40, 30))
 {
     this->cursor.borderOn();
-    this->cla = new ConsoleListA(&this->cursor, CCTL::PT(3, 4), CCTL::PT(25, 20));
+    this->cla = new ConsoleListA(&cursor, CCTL::PT(3, 4), CCTL::PT(25, 10));
 }
 
 ConsoleBlockDesc::~ConsoleBlockDesc()
@@ -31,7 +31,7 @@ void ConsoleBlockDesc::drawContent(void* rawMsg) {
                     ->print(dmsg.lines[id]);
             }
         } else if(msg->mode == 2) {
-            // TODO options mode only paints options now
+            // options mode
             DialogUnitDesc::OptionsMsg& opts = *msg->opts;
             this->cursor.moveTo(leftCorner)
                 ->attrOn(A_BOLD)
@@ -51,6 +51,8 @@ void ConsoleBlockDesc::drawContent(void* rawMsg) {
             }
             this->cla->setLines(&names);
             this->cla->printList();
+            this->cursor.moveTo(CCTL::PT(3, 21))
+                ->print(opts.select >= 0 && opts.select < (int)opts.options.size() ? opts.options[opts.select].getDesc() : "Close this menu.");
         }
     } else {
         this->cursor.clear()->hide();

@@ -16,7 +16,7 @@ class FarmField
         int getIdPlusOne() { return getId() + 1; }
         int getWater() {return waterAmount; }
         void setWater(int water) { this->waterAmount = water; }
-        bool empty();
+        bool empty() const;
         void removePlant();
         PlantLive* getPlant() { return this->plant; }
         void addPlant(PlantLive* pl) { plant = pl; }

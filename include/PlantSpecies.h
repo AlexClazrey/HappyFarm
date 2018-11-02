@@ -58,8 +58,8 @@ public:
             // return stage number
             virtual int execute(PlantState*) const = 0;
             virtual bool canGrow(PlantState*) const = 0;
-            virtual std::string getStageName(PlantState*) const = 0;
-            virtual std::string getStageDesc(PlantState*) const = 0;
+            virtual std::string getStageName(const PlantState*) const = 0;
+            virtual std::string getStageDesc(const PlantState*) const = 0;
         };
     };
 
@@ -75,8 +75,8 @@ public:
     virtual ~PlantSpecies();
     virtual std::string toString() const { return this->name; }
     virtual std::string getName() const { return this->name; }
-    virtual std::string getStageName(PlantState *ps) const { return this->StGrow->getStageName(ps); }
-    virtual std::string getStageDesc(PlantState *ps) const { return this->StGrow->getStageDesc(ps); }
+    virtual std::string getStageName(const PlantState *ps) const { return this->StGrow->getStageName(ps); }
+    virtual std::string getStageDesc(const PlantState *ps) const { return this->StGrow->getStageDesc(ps); }
     virtual void harvest(FarmField*) const;
     virtual void update(FarmField*) const;
 

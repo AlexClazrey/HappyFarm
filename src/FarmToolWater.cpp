@@ -1,6 +1,8 @@
 #include "FarmToolWater.h"
 #include "FarmField.h"
 #include "GameDriverSingleton.h"
+#include "PlantLive.h"
+#include "PlantState.h"
 
 FarmToolWater::FarmToolWater()
 {
@@ -26,6 +28,9 @@ bool FarmToolWater::available(FarmField* target) {
 int FarmToolWater::action(FarmField *target) {
     // no need to use FarmCommand cause it's a simple action
     target->setWater(target->getWater() + this->waterAmount);
+    if(!target->empty()) {
+        target->getPlant()->getState()->dry = false;
+    }
     GameDriverSingleton::getInstance()->addLog("You watered land #" + std::to_string(target->getIdPlusOne()) + ".");
     return 0;
 }

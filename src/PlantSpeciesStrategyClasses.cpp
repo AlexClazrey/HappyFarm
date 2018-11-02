@@ -59,14 +59,14 @@ bool PlantSpeciesStrategyClasses::GrowA::canGrow(PlantState *ps) const {
     return !(ps->dry || ps->dead || ps->worm || ps->mature);
 }
 
-std::string PlantSpeciesStrategyClasses::GrowA::getStageName(PlantState* ps) const {
+std::string PlantSpeciesStrategyClasses::GrowA::getStageName(const PlantState* ps) const {
     if(ps->stage >= 0 && ps->stage < (int)this->stages.size()) {
         return stages[ps->stage].name;
     }
     return "Mutated";
 }
 
-std::string PlantSpeciesStrategyClasses::GrowA::getStageDesc(PlantState* ps) const {
+std::string PlantSpeciesStrategyClasses::GrowA::getStageDesc(const PlantState* ps) const {
     if(ps->stage >= 0 && ps->stage < (int)this->stages.size()) {
         return stages[ps->stage].desc;
     }

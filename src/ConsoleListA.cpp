@@ -18,9 +18,9 @@ void ConsoleListA::printList() {
             this->ctl->attrOn(A_STANDOUT);
         }
         this->ctl
-            ->moveTo(CCTL::PT(this->start.x, this->start.y + i))
+            ->moveTo(CCTL::PT(start.x, start.y + i))
             ->print((*this->lines)[i])
-            ->spaceTo(this->size.x + this->start.x)
+            ->spaceTo(start.x + size.x)
             ->attrOff(A_STANDOUT);
     }
 }

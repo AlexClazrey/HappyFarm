@@ -17,7 +17,7 @@ std::string PlantLive::toString() const
 {
     if(this->species)
     {
-        return species->toString() + (state ? "\t" + species->getStageName(state) + state->toString() : "");
+        return species->toString() + (state ? "\t" + species->getStageName(state) + " " + state->toString() : "");
     }
     else
     {

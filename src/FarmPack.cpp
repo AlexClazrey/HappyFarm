@@ -53,6 +53,7 @@ void FarmPack::initProto() {
                     "Finally, I dug out a big one.",
                     -1, 200);
     }
+    inited = true;
 }
 
 

@@ -20,6 +20,7 @@ DialogUnitShop::~DialogUnitShop()
 }
 
 void DialogUnitShop::onKeyPressed(InputCommand* cmd, Farm* farm) {
+    bool lastSubmit = true;
     this->makeGoodsList(&farm->pack);
     if(cmd->getKeyPressed() == InputCommand::Down && msg.select < (int)msg.goods.size() - 1) {
         msg.select++;
@@ -45,10 +46,12 @@ void DialogUnitShop::onKeyPressed(InputCommand* cmd, Farm* farm) {
         }
     } else if(cmd->getKeyPressed() == InputCommand::Tab) {
         this->msg.show = 0;
-        // this->submit();
+        this->submit();
+        lastSubmit = false;
         GameDriverSingleton::getInstance()->changeFocus(DialogUnitField::FOCUS_NAME, farm, nullptr);
     }
-    this->submit();
+    if(lastSubmit)
+        this->submit();
 }
 
 void DialogUnitShop::refresh(Farm *farm) {

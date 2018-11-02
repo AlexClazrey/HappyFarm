@@ -30,7 +30,7 @@ int DisplayManager::onEvent(const std::string& eventName, void* obj) {
         this->drawList.push_back((DrawCommand*)obj);
     } else if (eventName == GameDriver::Event::DRAW_EXECUTE) {
         // sort by image layer and paint
-        std::sort(this->drawList.begin(), this->drawList.end(), DisplayManager::compareCommand);
+        // std::sort(this->drawList.begin(), this->drawList.end(), DisplayManager::compareCommand);
         for(DrawCommand* cmd : this->drawList) {
             cmd->getTarget()->drawAll(cmd->getMsg());
             delete cmd;

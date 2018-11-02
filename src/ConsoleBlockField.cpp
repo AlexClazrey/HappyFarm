@@ -6,8 +6,9 @@ ConsoleBlockField::ConsoleBlockField()
     : ConsoleBlock(CCTL::PT(0,0), CCTL::PT(70, 20))
 {
     this->cursor.borderOn();
-    this->cla = new ConsoleListA(&this->cursor, CCTL::PT(8, 4), CCTL::PT(47, 10));
+    this->cla = new ConsoleListA(&cursor, CCTL::PT(8, 4), CCTL::PT(47, 10));
 }
+
 ConsoleBlockField::~ConsoleBlockField()
 {
     if(cla)
@@ -21,7 +22,8 @@ void ConsoleBlockField::drawContent(void* rawMsg) {
             ->attrOn(A_BOLD)
             ->moveTo(CCTL::PT(6, 2))
             ->print("Your Yard")
-            ->attrOff(A_BOLD);
+            ->attrOff(A_BOLD)
+            ->refresh();
         this->cla->setLines(&msg->fields);
         this->cla->setSelect(msg->select);
         this->cla->printList();

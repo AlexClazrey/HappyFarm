@@ -57,7 +57,8 @@ void DialogUnitField::openFieldMenu(FarmField *field, Farm* farm) {
 }
 
 void DialogUnitField::onKeyPressed(InputCommand* cmd, Farm* farm) {
-    // TODO up/down/enter/tab/escape five keys
+    // up/down/enter/tab/escape five keys
+    bool lastSubmit = true;
     this->makeSummary(farm);
     // select on land
     if(cmd->getKeyPressed() == InputCommand::Down && this->msg.select < fieldSize() - 1) {
@@ -72,11 +73,13 @@ void DialogUnitField::onKeyPressed(InputCommand* cmd, Farm* farm) {
         }
     } else if (cmd->getKeyPressed() == InputCommand::Tab) {
         this->msg.show = 0;
-        // this->submit(); // place this here can prevent bug, I don't know why. DEBUG
+        this->submit(); // place this here can prevent bug, now i know because top and hide issue
+        lastSubmit = false;
         // GameDriverSingleton::getInstance()->addLog("Tab pressed");
         GameDriverSingleton::getInstance()->changeFocus(DialogUnitBackpack::FOCUS_NAME, farm, nullptr);
     }
-    this->submit();
+    if(lastSubmit)
+        this->submit();
 }
 
 void DialogUnitField::refresh(Farm* farm) {

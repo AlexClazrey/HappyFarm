@@ -32,8 +32,8 @@ class PlantSpeciesStrategyClasses
             virtual ~GrowA() {}
             int execute(PlantState*) const;
             bool canGrow(PlantState*) const;
-            std::string getStageName(PlantState*) const;
-            std::string getStageDesc(PlantState*) const;
+            std::string getStageName(const PlantState*) const;
+            std::string getStageDesc(const PlantState*) const;
             void destruction() { delete this; }
         private:
             std::vector<Stage> stages;

@@ -15,6 +15,7 @@ class FarmTool
         virtual int action(FarmField *target) = 0;
         virtual MenuOption::CBF getCallback(FarmField *target) { return std::bind(&FarmTool::action, this, target); }
     protected:
+        // virtual int actionWithRefresh(FarmField* target);
     private:
 };
 

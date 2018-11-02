@@ -12,6 +12,7 @@ public:
         int y;
         Point() : x(0), y(0) {}
         Point(int x, int y) : x(x), y(y) {};
+        Point operator+(const Point& op1) { return Point(op1.x + x, op1.y + y); }
     };
     typedef Point PT;
 
@@ -28,9 +29,14 @@ public:
     bool hasBorder() { return this->border; }
     int getX() const;
     int getY() const;
+    int getSizeX() const { return winSize.x; }
+    int getSizeY() const { return winSize.y; }
+    PT getSize() const { return winSize; }
+    PT getLeftCorner() const { return border ? PT(1,1) + startPoint : startPoint; }
     CursorControl* hide();
     CursorControl* show();
     CursorControl* top();
+    CursorControl* above(CursorControl*);
     CursorControl* attrOn(int attr);
     CursorControl* attrOff(int attr);
     CursorControl* print(const std::string& str);
@@ -53,5 +59,6 @@ private:
     PANEL *panel, *panelBorder;
 };
 typedef CursorControl CCTL;
+
 
 #endif // CURSORCONTROL_H

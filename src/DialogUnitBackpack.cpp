@@ -32,6 +32,7 @@ DialogUnitBackpack::onEvent(const std::string& name, void* msg) {
 }
 
 void DialogUnitBackpack::onKeyPressed(InputCommand* cmd, Farm* farm) {
+    bool lastSubmit = true;
     this->makeGoodsList(&farm->pack);
     if(cmd->getKeyPressed() == InputCommand::Down && msg.select < (int)msg.goods.size() - 1) {
         msg.select++;
@@ -54,9 +55,12 @@ void DialogUnitBackpack::onKeyPressed(InputCommand* cmd, Farm* farm) {
         GameDriverSingleton::getInstance()->toMenuPage(&res);
     } else if(cmd->getKeyPressed() == InputCommand::Tab) {
         this->msg.show = 0;
+        this->submit();
+        lastSubmit = false;
         GameDriverSingleton::getInstance()->changeFocus(DialogUnitShop::FOCUS_NAME, farm, nullptr);
     }
-    this->submit();
+    if(lastSubmit)
+        this->submit();
 }
 
 void DialogUnitBackpack::refresh(Farm* farm) {

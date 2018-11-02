@@ -36,8 +36,8 @@ void PlantFactory::initProtoPlant() {
         std::vector<PSSC::GrowA::Stage> stages;
         stages.push_back(PSSC::GrowA::Stage(4, "Seed", "Being buried by earth."));
         stages.push_back(PSSC::GrowA::Stage(4, "Sprout", "Those green leaves give me hope."));
-        stages.push_back(PSSC::GrowA::Stage(4, "Flower", "Clusters of white flowers are beautiful."));
-        stages.push_back(PSSC::GrowA::Stage(-1, "Fruit", "Flowers have withered, maybe I can dig now."));
+        stages.push_back(PSSC::GrowA::Stage(4, "Flower", "Clusters of white flowers are\nbeautiful."));
+        stages.push_back(PSSC::GrowA::Stage(-1, "Fruit", "Flowers have withered, maybe I can\ndig now."));
         protoPlant[PlantSpecies::Code::POTATO]
             = new PlantSpecies("Potato",
                                 new PSSC::FruitA(FarmItem::Code::POTATO_FRUIT, 3, 1, 2, 50),
@@ -48,4 +48,5 @@ void PlantFactory::initProtoPlant() {
                                 new PSSC::GrowA(stages)
                                 );
     }
+    inited = true;
 }

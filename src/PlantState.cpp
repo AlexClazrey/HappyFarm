@@ -21,5 +21,5 @@ std::string PlantState::toString() const {
     if(mature) {
         return std::string("[Can Harvest]");
     }
-    return std::string(dry ? " [Dry]" : "") + (worm ? " [Worm]" : "");
+    return std::string(dry ? "[Dry] " : "") + (worm ? "[Worm] " : "");
 }

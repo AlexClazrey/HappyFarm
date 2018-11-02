@@ -15,15 +15,19 @@ FarmField::~FarmField()
 
 std::string FarmField::toString() const
 {
-    return std::to_string(id + 1) + ". " + (plant ? plant->toString() : (this->waterAmount > 0 ? "Wet land" : "Empty land"));
+    return std::to_string(id + 1) + ". " + (empty() ? (this->waterAmount > 0 ? "Wet land" : "Empty land") : plant->toString() );
 }
 
 std::string FarmField::descriptionText() const
 {
     std::stringstream res;
-    if(plant)
+    if(!empty())
     {
-        // TODO plant description
+        // plant description
+        const PlantState* pSt = plant->getState();
+        const PlantSpecies* pSp = plant->getSpecies();
+        const std::string &str = pSt->toString();
+        res << str << (str.size() > 0 ? "\n" : "") << pSp->getStageDesc(pSt);
     }
     else
     {
@@ -37,16 +41,18 @@ std::string FarmField::descriptionText() const
 
 std::string FarmField::descriptionTitle() const
 {
-    return plant ? plant->getName() : (this->waterAmount > 0 ? "Wet Land" : "Empty Land");
+    return empty()
+        ? (this->waterAmount > 0 ? "Wet Land" : "Empty Land")
+        : (plant->getName() + " " + plant->getSpecies()->getStageName(plant->getState()));
 }
 
-bool FarmField::empty() {
+bool FarmField::empty() const {
     return this->plant == nullptr || this->plant->getState() == nullptr || this->plant->getSpecies() == nullptr;
 }
 
 void FarmField::removePlant()
 {
-    if(plant)
+    if(!empty())
     {
         delete plant;
         plant = nullptr;
@@ -55,7 +61,7 @@ void FarmField::removePlant()
 
 void FarmField::deadPlant()
 {
-    if(plant)
+    if(!empty())
     {
         plant->getState()->dead = true;
         plant->getState()->deathTime = GameDriverSingleton::getInstance()->getFarmClock();
@@ -63,13 +69,13 @@ void FarmField::deadPlant()
 }
 
 void FarmField::harvest() {
-    if(plant && plant->getSpecies()) {
+    if(!empty()) {
         plant->getSpecies()->harvest(this);
     }
 }
 
 void FarmField::update() {
-    if(plant && plant->getSpecies()) {
+    if(!empty()) {
         plant->getSpecies()->update(this);
     }
 }

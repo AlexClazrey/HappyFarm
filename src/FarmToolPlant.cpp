@@ -5,6 +5,7 @@
 #include "FarmItemSeed.h"
 #include "FarmCommand.h"
 #include "DebugHeader.h"
+#include "DescriptionMaker.h"
 
 FarmToolPlant::FarmToolPlant()
 {
@@ -63,7 +64,7 @@ int FarmToolPlant::action(FarmField *target) {
 }
 
 int FarmToolPlant::plant(FarmField *target, PlantSpecies::Code plantCode, FarmItem::Code seedCode, const std::string& plantName) {
-    GameDriverSingleton::getInstance()->addLog("You plant " + plantName + " seed at field #" + std::to_string(target->getIdPlusOne()));
+    GameDriverSingleton::getInstance()->addLog("You plant " + DescriptionMaker::toLower(plantName) + " at field #" + std::to_string(target->getIdPlusOne()));
     FarmCommandPlant cmd = FarmCommandPlant(target, plantCode, seedCode);
     GameDriverSingleton::getInstance()->commitFarmCommand(&cmd);
     return 0;
