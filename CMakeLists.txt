@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.1)
 # top-level cmake file will have this line.
 project(HappyFarm VERSION 1.0 DESCRIPTION "Happy Farm" LANGUAGES CXX)
 
-add_executable(farm 
+find_package(Curses REQUIRED)
+
+add_executable(farm main.cpp 
 src/ConsoleBlock.cpp          src/DialogUnitLog.cpp    src/FarmPackBuilderNew.cpp
 src/ConsoleBlockBackpack.cpp  src/DialogUnitMenu.cpp   src/FarmTool.cpp
 src/ConsoleBlockDesc.cpp      src/DialogUnitPause.cpp  src/FarmToolbox.cpp
@@ -27,4 +29,5 @@ src/DialogUnitField.cpp       src/FarmPackBuilder.cpp
 )
 
 target_include_directories(farm PUBLIC include)
+target_link_libraries(farm ${CURSES_LIBRARIES} panel)
 

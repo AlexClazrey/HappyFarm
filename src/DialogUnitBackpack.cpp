@@ -22,7 +22,7 @@ DialogUnitBackpack::~DialogUnitBackpack()
 {
 }
 
-DialogUnitBackpack::onEvent(const std::string& name, void* msg) {
+int DialogUnitBackpack::onEvent(const std::string& name, void* msg) {
     if(name == GameDriver::Event::CHANGE_FOCUS && ((DialogManager::ChangeFocusMsg*)msg)->name == this->FOCUS_NAME) {
         GameDriverSingleton::getInstance()->getEventManager()
             ->emit(GameDriver::Event::SET_FOCUS, this);
