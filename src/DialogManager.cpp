@@ -28,7 +28,11 @@ int DialogManager::onEvent(const std::string &eventName, void* obj) {
         if(this->focused) {
             this->focused->onKeyPressed((InputCommand*)obj, GameDriverSingleton::getInstance()->getFarm());
         } else {
-            addstr("key pressed but no dialog focused.\n");
+            char keyType[30]={0};
+            sprintf(keyType, "%d", ((InputCommand*)obj)->getKeyPressed());
+            addstr("key pressed but no dialog focused. key type:");
+            addstr(keyType);
+            addstr("\n");
         }
     } else if(eventName == GameDriver::Event::REFRESH_SCREEN) {
         this->refresh(GameDriverSingleton::getInstance()->getFarm());

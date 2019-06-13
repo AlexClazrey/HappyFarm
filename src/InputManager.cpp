@@ -36,7 +36,11 @@ void InputManager::start() {
         }
         cycles++;
         keyCount = 0;
-        while(keyCount < 10 && (keys[keyCount++] = wgetch(this->win)) && keys[keyCount - 1] != EOF) {}; //read all key pressed
+        while(keyCount < 10
+                && (keys[keyCount++] = wgetch(this->win))
+                && keys[keyCount - 1] != EOF
+                && keys[keyCount -1] != 255) // on armhf 255 is not EOF
+        {}; //read all key pressed
         keyCount--;
         if(keyCount > 0) {
             InputCommand::Key keyPressed = checkKey(keys, keyCount);
@@ -73,6 +77,7 @@ int InputManager::onEvent(const std::string& eventName, void* msg) {
 
 
 InputCommand::Key InputManager::checkKey(char keys[], int keyCount) {
+    // #define DEBUG_INPUT
     #ifdef DEBUG_INPUT
     for(int i = 0; i < keyCount; i++) {
         addstr(std::to_string(keys[i]).c_str());
